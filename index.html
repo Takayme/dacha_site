@@ -40,6 +40,48 @@
       background: linear-gradient(to bottom, #101311, #161d18);
       color: var(--text);
       overflow-x: hidden;
+      padding-top: 70px;
+    }
+
+    /* NAVIGATION BAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background: rgba(17, 21, 19, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8%;
+    }
+
+    .navbar .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
     }
 
     section {
@@ -55,13 +97,15 @@
       line-height: 1.7;
     }
 
+    /* HERO SECTION */
     .hero {
-      min-height: 100vh;
+      min-height: calc(100vh - 70px);
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       position: relative;
+      padding: 60px 8%;
       background:
         radial-gradient(circle at top, rgba(45,90,39,0.4), transparent 50%),
         url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop') center/cover;
@@ -79,22 +123,70 @@
       position: relative;
       z-index: 1;
       max-width: 800px;
+      width: 100%;
     }
 
     .hero h1 {
-      font-size: 4rem;
-      margin-bottom: 20px;
+      font-size: 3.8rem;
+      margin-bottom: 15px;
       color: var(--gold);
       text-shadow: 0 0 20px rgba(212,177,95,0.35);
     }
 
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 35px;
+    .hero p.hero-desc {
+      font-size: 1.15rem;
+      margin-bottom: 30px;
+    }
+
+    /* DISCORD STATS IN HERO */
+    .stat-card {
+      background: rgba(27, 33, 29, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 35px 30px;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    }
+
+    .stat-card h3 {
+      color: var(--gold);
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .stat-item {
+      background: rgba(255,255,255,0.04);
+      padding: 20px 15px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .stat-item span {
+      display: block;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--green-light);
+      margin-bottom: 5px;
+    }
+
+    .stat-item p {
+      font-size: 0.95rem;
     }
 
     .btn {
       display: inline-block;
+      width: 100%;
       padding: 16px 34px;
       background: linear-gradient(135deg, var(--green), var(--green-light));
       color: white;
@@ -106,7 +198,7 @@
     }
 
     .btn:hover {
-      transform: translateY(-4px) scale(1.03);
+      transform: translateY(-3px);
       box-shadow: 0 0 35px rgba(45,90,39,0.5);
     }
 
@@ -121,66 +213,50 @@
       margin-bottom: 10px;
     }
 
+    /* GAMES GRID WITH IMAGES */
     .games-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
     }
 
     .game-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 28px;
-      transition: 0.35s ease;
-      position: relative;
       overflow: hidden;
+      transition: 0.35s ease;
+      display: flex;
+      flex-direction: column;
     }
 
-    .game-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent, rgba(45,90,39,0.12));
-      opacity: 0;
-      transition: 0.3s;
+    .game-card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border);
     }
 
-    .game-card:hover::before {
-      opacity: 1;
+    .game-card-body {
+      padding: 24px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .game-card:hover {
-      transform: translateY(-10px) scale(1.03);
-      border-color: rgba(212,177,95,0.3);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      transform: translateY(-10px) scale(1.02);
+      border-color: rgba(212,177,95,0.4);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
     .game-card h3 {
       margin-bottom: 12px;
       color: var(--gold);
+      font-size: 1.4rem;
     }
 
-    .rules {
-      background: rgba(255,255,255,0.03);
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      padding: 40px;
-    }
-
-    .rules ul {
-      list-style: none;
-      display: grid;
-      gap: 18px;
-    }
-
-    .rules li {
-      padding: 18px;
-      background: rgba(255,255,255,0.03);
-      border-radius: 14px;
-      border-left: 4px solid var(--green-light);
-    }
-
+    /* SCHEDULE */
     .schedule {
       overflow-x: auto;
     }
@@ -207,50 +283,6 @@
       background: rgba(255,255,255,0.03);
     }
 
-    .discord-stats {
-      display: flex;
-      justify-content: center;
-      margin-top: 40px;
-    }
-
-    .stat-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 40px;
-      width: 100%;
-      max-width: 500px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-    }
-
-    .stat-card h3 {
-      color: var(--gold);
-      font-size: 2rem;
-      margin-bottom: 30px;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-
-    .stat-item {
-      background: rgba(255,255,255,0.03);
-      padding: 25px;
-      border-radius: 18px;
-    }
-
-    .stat-item span {
-      display: block;
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--green-light);
-      margin-bottom: 8px;
-    }
-
     footer {
       padding: 35px 8%;
       text-align: center;
@@ -265,11 +297,16 @@
 
     @media (max-width: 768px) {
       .hero h1 {
-        font-size: 2.8rem;
+        font-size: 2.6rem;
       }
 
-      .hero p {
+      .hero p.hero-desc {
         font-size: 1rem;
+      }
+
+      .nav-links {
+        gap: 15px;
+        font-size: 0.9rem;
       }
 
       section {
@@ -280,90 +317,113 @@
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <a href="#hero" class="logo">Дальневосточная дача</a>
+    <ul class="nav-links">
+      <li><a href="#hero">Главная</a></li>
+      <li><a href="#games">Игры</a></li>
+      <li><a href="#schedule">Расписание</a></li>
+    </ul>
+  </header>
+
+  <!-- HERO (ГЛАВНАЯ + ОНЛАЙН) -->
+  <section id="hero" class="hero">
     <div class="hero-content" data-aos="fade-up">
       <h1>Дальневосточная дача</h1>
-      <p>
+      <p class="hero-desc">
         Уютное Discord-сообщество под руководством Nakayame.
         Место, где ламповая атмосфера встречается с тактикой,
         выживанием и вечерними посиделками у виртуального костра.
       </p>
 
-      <!-- ЗАМЕНИ ССЫЛКУ НА СВОЮ -->
-      <a href="https://discord.gg/4DKHdUCtmC" class="btn" target="_blank">
-        Присоединиться в Discord
-      </a>
+      <!-- РАМКА С ОНЛАЙНОМ -->
+      <div class="stat-card">
+        <h3 id="server-name">Дальневосточная дача</h3>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span id="members">...</span>
+            <p>Участников</p>
+          </div>
+
+          <div class="stat-item">
+            <span id="online">...</span>
+            <p>Онлайн</p>
+          </div>
+        </div>
+
+        <a href="https://discord.gg/4DKHdUCtmC" target="_blank" class="btn">
+          Присоединиться в Discord
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- GAMES -->
-  <section>
+  <!-- GAMES (ИГРЫ) -->
+  <section id="games">
     <div class="section-title" data-aos="fade-up">
       <h2>Наши Игры</h2>
-      <p>Каждый найдёт себе уютный уголок.</p>
+      <p>Основные дисциплины, в которые мы играем сообществом.</p>
     </div>
 
     <div class="games-grid">
 
+      <!-- Arma 3 -->
       <div class="game-card" data-aos="zoom-in">
-        <h3>Hearts of Iron IV</h3>
-        <p>
-          Глобальные стратегии, политика, дипломатия и полное
-          переписывание истории человечества.
-        </p>
+        <img class="game-card-img" src="images/arma3.jpg" alt="Arma 3">
+        <div class="game-card-body">
+          <h3>Arma 3</h3>
+          <p>
+            Тактические операции, дисциплина, командная работа
+            и серьёзные военные сценарии.
+          </p>
+        </div>
       </div>
 
+      <!-- Project Zomboid -->
       <div class="game-card" data-aos="zoom-in" data-aos-delay="100">
-        <h3>Minecraft</h3>
-        <p>
-          Ламповое выживание, стройка огромных проектов
-          и спокойные вечера на сервере.
-        </p>
+        <img class="game-card-img" src="images/project-zomboid.jpg" alt="Project Zomboid">
+        <div class="game-card-body">
+          <h3>Project Zomboid</h3>
+          <p>
+            Суровое выживание в мире зомби-апокалипсиса,
+            где одна ошибка может стать последней.
+          </p>
+        </div>
       </div>
 
+      <!-- Barotrauma -->
       <div class="game-card" data-aos="zoom-in" data-aos-delay="200">
-        <h3>Arma 3</h3>
-        <p>
-          Тактические операции, дисциплина, командная работа
-          и серьёзные военные сценарии.
-        </p>
+        <img class="game-card-img" src="images/barotrauma.jpg" alt="Barotrauma">
+        <div class="game-card-body">
+          <h3>Barotrauma</h3>
+          <p>
+            Исследование тёмных глубин океана Европы, управление подводной лодкой и борьба с монстрами.
+          </p>
+        </div>
       </div>
 
+      <!-- Minecraft -->
       <div class="game-card" data-aos="zoom-in" data-aos-delay="300">
-        <h3>Project Zomboid</h3>
-        <p>
-          Суровое выживание в мире зомби-апокалипсиса,
-          где одна ошибка может стать последней.
-        </p>
+        <img class="game-card-img" src="images/minecraft" alt="Minecraft">
+        <div class="game-card-body">
+          <h3>Minecraft</h3>
+          <p>
+            Ламповое выживание, стройка огромных проектов
+            и спокойные вечера на сервере.
+          </p>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- RULES -->
-  <section>
-    <div class="section-title" data-aos="fade-up">
-      <h2>Кодекс Дачника</h2>
-      <p>Немного правил для хорошей атмосферы.</p>
-    </div>
-
-    <div class="rules" data-aos="fade-up">
-      <ul>
-        <li>🌲 Не будь токсичным - Nakayame всё слышит.</li>
-        <li>☕ Уважай других дачников и их отдых.</li>
-        <li>🎮 Играй ради атмосферы, а не только ради победы.</li>
-        <li>🪓 Не ломай чужой труд, на это потрачено время.</li>
-        <li>🔥 Nakayame всегда прав. Если не прав - прочитай пункт заново.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- SCHEDULE -->
-  <section>
+  <!-- SCHEDULE (РАСПИСАНИЕ) -->
+  <section id="schedule">
     <div class="section-title" data-aos="fade-up">
       <h2>Расписание Ивентов</h2>
-      <p>Примерная активность на неделю.</p>
+      <p>Активность и плановые игры на неделю.</p>
     </div>
 
     <div class="schedule" data-aos="fade-up">
@@ -374,7 +434,7 @@
           <th>Время по МСК</th>
         </tr>
         
-         <tr>
+        <tr>
           <td>Как соберутся люди</td>
           <td>Project Zomboid - Kentucky and Indiana</td>
           <td>12:00 - 19:00</td>
@@ -382,58 +442,22 @@
         
         <tr>
           <td>Как соберутся люди</td>
-          <td>Warhammer 40,000: Gladius – Relics of War</td>
+          <td>Barotrauma / Warhammer 40k</td>
           <td>12:00 - 19:00</td>
         </tr>
         
         <tr>
           <td>Вторник</td>
-          <td>Heats of Iron IV - The Fire Rises</td>
+          <td>Hearts of Iron IV - The Fire Rises</td>
           <td>12:00 - 20:00</td>
         </tr>
         
         <tr>
-          <td>Cуббота</td>
-          <td>Arma 3 - Chernarus(One Week - One War)</td>
+          <td>Суббота</td>
+          <td>Arma 3 - Chernarus (One Week - One War)</td>
           <td>12:00 - 20:00</td>
         </tr>
-        
-        
       </table>
-    </div>
-  </section>
-
-  <!-- DISCORD STATS -->
-  <section>
-    <div class="section-title" data-aos="fade-up">
-      <h2>Онлайн на Даче</h2>
-      <p>Кто сейчас отдыхает на сервере.</p>
-    </div>
-
-    <div class="discord-stats" data-aos="zoom-in">
-      <div class="stat-card">
-
-        <h3 id="server-name">Дальневосточная дача</h3>
-
-        <div class="stats-grid">
-
-          <div class="stat-item">
-            <span id="members">0</span>
-            <p>Участников</p>
-          </div>
-
-          <div class="stat-item">
-            <span id="online">0</span>
-            <p>Онлайн</p>
-          </div>
-
-        </div>
-
-        <a href="https://discord.gg/4DKHdUCtmC" target="_blank" class="btn">
-          Зайти на сервер
-        </a>
-
-      </div>
     </div>
   </section>
 
@@ -454,42 +478,46 @@
   <!-- AOS Script -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
-  
-<script>
-  AOS.init({
-    duration: 900,
-    once: true
-  });
+  <script>
+    AOS.init({
+      duration: 900,
+      once: true
+    });
 
-  const INVITE_CODE = "4DKHdUCtmC";
+    const INVITE_CODE = "4DKHdUCtmC";
 
-  async function loadDiscordStats() {
-    try {
-      const response = await fetch(
-        `https://discord.com/api/v9/invites/${INVITE_CODE}?with_counts=true`
-      );
+    async function loadDiscordStats() {
+      try {
+        const response = await fetch(
+          `https://discord.com/api/v10/invites/${INVITE_CODE}?with_counts=true`
+        );
 
-      const data = await response.json();
+        if (!response.ok) {
+          throw new Error(`HTTP Error: ${response.status}`);
+        }
 
-      document.getElementById("server-name").textContent =
-        data.guild.name;
+        const data = await response.json();
 
-      document.getElementById("online").textContent =
-        data.approximate_presence_count;
+        if (data.guild && data.guild.name) {
+          document.getElementById("server-name").textContent = data.guild.name;
+        }
 
-      document.getElementById("members").textContent =
-        data.approximate_member_count;
+        if (data.approximate_presence_count !== undefined) {
+          document.getElementById("online").textContent = data.approximate_presence_count;
+        }
 
-    } catch (error) {
-      console.error("Ошибка Discord API:", error);
+        if (data.approximate_member_count !== undefined) {
+          document.getElementById("members").textContent = data.approximate_member_count;
+        }
+
+      } catch (error) {
+        console.error("Ошибка при получении данных Discord API:", error);
+      }
     }
-  }
 
-  loadDiscordStats();
-
-  setInterval(loadDiscordStats, 30000);
-</script>
-
+    loadDiscordStats();
+    setInterval(loadDiscordStats, 30000);
+  </script>
 
 </body>
 </html>
